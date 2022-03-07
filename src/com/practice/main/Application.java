@@ -14,7 +14,7 @@ public class Application {
         System.out.print("***Welcome***\nHello from jdbc");
         BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
         while(true) {
-        	System.out.println("1)To add Student.\n2)To delete Student.\n3)Display Student.\n4)Update Student/\n5)Exit.");
+        	System.out.println("1)To add Student.\n2)To delete Student.\n3)Display Student.\n4)Exit.");
         	System.out.println("\nEnter your choice:");
         	int c=Integer.parseInt(br.readLine());
         	
@@ -46,12 +46,19 @@ public class Application {
         		
         		
         	}else if(c==2) {
+        		System.out.println("Enter student id to delete");
+        		int userId=Integer.parseInt(br.readLine());
+        		
+        		boolean ans=StudentDaosImp.deleteStudentToDB(userId);
+        		if(ans) {
+        			System.out.println("1 Student deleted...");
+        		} else {
+        			System.out.println("Error! While deleting..");
+        		}
         		
         	}else if(c==3) {
-        		
+        		StudentDaosImp.showStudentToDB();
          	}else if(c==4) {
-         		
-         	}else if(c==5) {
          		break;
          	}
         }
